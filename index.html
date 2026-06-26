@@ -3,28 +3,81 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Your First Website — Portfolio</title>
-    <style>
-      body { font-family: system-ui, -apple-system, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; color: #111; }
-      header { max-width: 900px; margin: 0 auto 2rem; }
-      h1 { margin: 0 0 0.5rem; }
-      p.lead { color: #555; margin: 0 0 1.5rem; }
-      .card { border: 1px solid #e6e6e6; padding: 1rem; border-radius: 8px; background: #fff; }
-    </style>
+    <title>Natalia — UX Designer & Researcher</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <h1>Your Name</h1>
-      <p class="lead">A minimal starter portfolio — edit this file to showcase your work.</p>
+    <header class="site-header">
+      <div class="container nav-row">
+        <a class="brand" href="index.html">Natalia</a>
+        <nav class="main-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="work.html">Work</a>
+          <a href="skills.html">Skills</a>
+          <a href="testimonials.html">Testimonials</a>
+          <a href="contact.html" class="cta">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="card" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
-      <ul>
-        <li>Project One — short description.</li>
-        <li>Project Two — short description.</li>
-      </ul>
-      <p>To edit this site, open <a href="README.md">README.md</a> for local instructions.</p>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <h1>Hello, I'm Natalia.</h1>
+            <p class="subtitle">UX Designer & Researcher — Creating Meaningful Digital Experiences.</p>
+            <p class="lead">I transform complex business challenges into intuitive, accessible, and visually compelling experiences that deliver measurable value.</p>
+            <p class="hero-ctas">
+              <a href="work.html" class="btn primary">View My Work</a>
+              <a href="contact.html" class="btn secondary">Let's Connect</a>
+            </p>
+          </div>
+          <div class="hero-right">
+            <div class="visual-card">Interactive visual preview</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured container">
+        <h2>Featured Work</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Project One</h3>
+            <p>Problem: Brief problem statement.</p>
+            <a href="work.html">View Case Study →</a>
+          </article>
+          <article class="card">
+            <h3>Project Two</h3>
+            <p>Solution: Brief solution overview.</p>
+            <a href="work.html">View Case Study →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container about-preview">
+        <h2>About</h2>
+        <p>Story-driven summary of background, philosophy, and experience. <a href="about.html">Read more →</a></p>
+      </section>
+
+      <section class="container skills-preview">
+        <h2>Skills</h2>
+        <p>UX Research · UX/UI Design · Tools · Emerging Tech — <a href="skills.html">See details →</a></p>
+      </section>
+
+      <section class="container cta-band">
+        <h2>Let's Build Something Meaningful Together</h2>
+        <p>Whether you're launching a new product, improving a customer experience, or scaling a design system, I'd love to help.</p>
+        <a href="contact.html" class="btn primary large">Schedule a Conversation</a>
+      </section>
     </main>
+
+    <footer class="site-footer container">
+      <p>© <span id="year"></span> Natalia — UX Designer. <a href="README.md">Requirements</a></p>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
