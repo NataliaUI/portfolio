@@ -1,83 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Natalia — UX Designer & Researcher</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natalia | UX Designer & Researcher</title>
+    <meta
+      name="description"
+      content="Natalia is a UX designer and researcher building human-centered digital experiences with clarity, strategy, and empathy."
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container nav-row">
-        <a class="brand" href="index.html">Natalia</a>
-        <nav class="main-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="work.html">Work</a>
-          <a href="skills.html">Skills</a>
-          <a href="testimonials.html">Testimonials</a>
-          <a href="contact.html" class="cta">Contact</a>
+    <div class="page">
+      <header>
+        <nav aria-label="Primary navigation">
+          <a class="brand" href="#home">
+            <span class="brand-mark"><span>N</span></span>
+            <span>Natalia</span>
+          </a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#research">Research</a>
+            <a href="#contact">Contact</a>
+          </div>
         </nav>
-      </div>
-    </header>
+      </header>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-left">
-            <h1>Hello, I'm Natalia.</h1>
-            <p class="subtitle">UX Designer & Researcher — Creating Meaningful Digital Experiences.</p>
-            <p class="lead">I transform complex business challenges into intuitive, accessible, and visually compelling experiences that deliver measurable value.</p>
-            <p class="hero-ctas">
-              <a href="work.html" class="btn primary">View My Work</a>
-              <a href="contact.html" class="btn secondary">Let's Connect</a>
+      <main id="home">
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">UX Designer & Researcher</span>
+            <h1 class="headline">
+              I design thoughtful digital products that feel effortless and meaningful.
+            </h1>
+            <p>
+              I’m Natalia, a UX designer and researcher who partners with teams to turn complex problems
+              into clear, elegant experiences that people love using.
             </p>
+            <div class="hero-actions">
+              <a class="button" href="#work">See my work</a>
+              <a class="button-secondary" href="#contact">Let's connect</a>
+            </div>
           </div>
-          <div class="hero-right">
-            <div class="visual-card">Interactive visual preview</div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-glow"></div>
+            <div class="hero-card">
+              <h2>Design with empathy</h2>
+              <p>
+                I combine research-led strategy with product design to craft interfaces that are intuitive,
+                beautiful, and built for real people.
+              </p>
+              <div class="stats">
+                <div class="stat">
+                  <strong>8+</strong>
+                  <span>Years in UX</span>
+                </div>
+                <div class="stat">
+                  <strong>40+</strong>
+                  <span>Research studies</span>
+                </div>
+                <div class="stat">
+                  <strong>20+</strong>
+                  <span>Products shipped</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="featured container">
-        <h2>Featured Work</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Project One</h3>
-            <p>Problem: Brief problem statement.</p>
-            <a href="work.html">View Case Study →</a>
-          </article>
-          <article class="card">
-            <h3>Project Two</h3>
-            <p>Solution: Brief solution overview.</p>
-            <a href="work.html">View Case Study →</a>
-          </article>
-        </div>
-      </section>
+        <section id="about">
+          <div class="section-heading">
+            <div>
+              <h3>About me</h3>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <h4>My approach</h4>
+              <p>Research-led design and strong collaboration are the foundation of every product I create.</p>
+            </div>
+          </div>
+        </section>
 
-      <section class="container about-preview">
-        <h2>About</h2>
-        <p>Story-driven summary of background, philosophy, and experience. <a href="about.html">Read more →</a></p>
-      </section>
+        <section id="work">
+          <div class="section-heading">
+            <h3>Featured work</h3>
+          </div>
+          <div class="project-list">
+            <div class="project">
+              <div class="project-title">
+                <strong>Retail insights platform</strong>
+                <a href="#">View case study</a>
+              </div>
+              <p>Redesigned commerce journey to improve conversion and make complex data easier to act on.</p>
+            </div>
+            <div class="project">
+              <div class="project-title">
+                <strong>Healthcare portal</strong>
+                <a href="#">View case study</a>
+              </div>
+              <p>Simplified patient workflows and made key medical tools accessible for a broad audience.</p>
+            </div>
+          </div>
+        </section>
 
-      <section class="container skills-preview">
-        <h2>Skills</h2>
-        <p>UX Research · UX/UI Design · Tools · Emerging Tech — <a href="skills.html">See details →</a></p>
-      </section>
+        <section id="research">
+          <div class="section-heading">
+            <div>
+              <h3>Research highlights</h3>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <h4>User interviews</h4>
+              <p>Qualitative insights that shaped strategy and experience direction.</p>
+            </div>
+            <div class="card">
+              <h4>Design systems</h4>
+              <p>Reusable, accessible components that scale with product teams.</p>
+            </div>
+          </div>
+        </section>
 
-      <section class="container cta-band">
-        <h2>Let's Build Something Meaningful Together</h2>
-        <p>Whether you're launching a new product, improving a customer experience, or scaling a design system, I'd love to help.</p>
-        <a href="contact.html" class="btn primary large">Schedule a Conversation</a>
-      </section>
-    </main>
+        <section id="contact">
+          <div class="section-heading">
+            <h3>Get in touch</h3>
+          </div>
+          <div class="contact-card">
+            <h4>Want to collaborate?</h4>
+            <p>Reach out for product design, research, or strategy work.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span>Email</span>
+                <a href="mailto:hello@example.com">hello@example.com</a>
+              </div>
+              <div class="contact-item">
+                <span>LinkedIn</span>
+                <a href="#">Connect</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-    <footer class="site-footer container">
-      <p>© <span id="year"></span> Natalia — UX Designer. <a href="README.md">Requirements</a></p>
-    </footer>
-
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+      <footer class="footer">
+        <p>Designed by Natalia — creating memorable, research-driven digital experiences.</p>
+      </footer>
+    </div>
   </body>
 </html>
