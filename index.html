@@ -9,6 +9,73 @@
       content="Natalia is a UX designer and researcher building human-centered digital experiences with clarity, strategy, and empathy."
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .weather-section {
+        margin-top: 2.75rem;
+      }
+      .weather-card {
+        display: grid;
+        gap: 1rem;
+        padding: 1.8rem;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+        color: white;
+      }
+      .weather-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+      .weather-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .weather-condition {
+        font-size: 1rem;
+        color: #e5e9ff;
+      }
+      .weather-body {
+        display: grid;
+        gap: 1rem;
+      }
+      .weather-temp {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .weather-emoji {
+        font-size: 2.4rem;
+      }
+      .weather-values {
+        display: grid;
+        gap: .2rem;
+      }
+      .weather-values strong {
+        font-size: 2rem;
+        line-height: 1;
+      }
+      .weather-values span {
+        color: var(--text-muted);
+      }
+      .weather-details {
+        display: grid;
+        gap: 0.35rem;
+        color: #c5c8ee;
+      }
+      .weather-details p {
+        margin: 0;
+        font-size: 0.95rem;
+      }
+      .weather-link {
+        color: var(--accent-soft);
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -65,6 +132,35 @@
                   <strong>20+</strong>
                   <span>Products shipped</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="weather-section">
+          <div class="section-heading">
+            <h3>Current weather</h3>
+          </div>
+          <div class="weather-card" id="weather-card">
+            <div class="weather-header">
+              <div>
+                <p class="weather-title">Live conditions</p>
+                <p class="weather-condition" id="weather-condition">Loading weather…</p>
+              </div>
+              <div class="weather-emoji" id="weather-emoji">☀️</div>
+            </div>
+            <div class="weather-body">
+              <div class="weather-temp">
+                <div class="weather-emoji" id="weather-emoji-large">☀️</div>
+                <div class="weather-values">
+                  <strong id="weather-temp-f">--°F</strong>
+                  <span id="weather-temp-c">--°C</span>
+                </div>
+              </div>
+              <div class="weather-details">
+                <p id="weather-location">Determining location…</p>
+                <p id="weather-more">Allow location access to see live data.</p>
+                <a class="weather-link" id="weather-link" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Powered by Open-Meteo</a>
               </div>
             </div>
           </div>
@@ -149,5 +245,108 @@
         <p>Designed by Natalia — creating memorable, research-driven digital experiences.</p>
       </footer>
     </div>
+    <script>
+      const conditionMap = {
+        0: { label: 'Clear sky', emoji: '☀️' },
+        1: { label: 'Mainly clear', emoji: '🌤️' },
+        2: { label: 'Partly cloudy', emoji: '⛅' },
+        3: { label: 'Overcast', emoji: '☁️' },
+        45: { label: 'Fog', emoji: '🌫️' },
+        48: { label: 'Depositing rime fog', emoji: '🌫️' },
+        51: { label: 'Light drizzle', emoji: '🌦️' },
+        53: { label: 'Moderate drizzle', emoji: '🌦️' },
+        55: { label: 'Dense drizzle', emoji: '🌧️' },
+        56: { label: 'Freezing drizzle', emoji: '🌧️' },
+        57: { label: 'Freezing drizzle', emoji: '🌧️' },
+        61: { label: 'Light rain', emoji: '🌧️' },
+        63: { label: 'Moderate rain', emoji: '🌧️' },
+        65: { label: 'Heavy rain', emoji: '🌧️' },
+        66: { label: 'Freezing rain', emoji: '🌧️' },
+        67: { label: 'Heavy freezing rain', emoji: '🌧️' },
+        71: { label: 'Light snow', emoji: '🌨️' },
+        73: { label: 'Moderate snow', emoji: '🌨️' },
+        75: { label: 'Heavy snow', emoji: '❄️' },
+        77: { label: 'Snow grains', emoji: '❄️' },
+        80: { label: 'Rain showers', emoji: '🌧️' },
+        81: { label: 'Heavy rain showers', emoji: '🌧️' },
+        82: { label: 'Violent rain showers', emoji: '🌧️' },
+        85: { label: 'Snow showers', emoji: '❄️' },
+        86: { label: 'Heavy snow showers', emoji: '❄️' },
+        95: { label: 'Thunderstorm', emoji: '⛈️' },
+        96: { label: 'Thunderstorm with hail', emoji: '⛈️' },
+        99: { label: 'Thunderstorm with hail', emoji: '⛈️' },
+      };
+
+      const $ = (id) => document.getElementById(id);
+      const condition = $('weather-condition');
+      const emoji = $('weather-emoji');
+      const emojiLarge = $('weather-emoji-large');
+      const tempF = $('weather-temp-f');
+      const tempC = $('weather-temp-c');
+      const locationText = $('weather-location');
+      const moreText = $('weather-more');
+      const weatherLink = $('weather-link');
+
+      function formatTemp(celsius) {
+        const f = (celsius * 9) / 5 + 32;
+        return { c: `${Math.round(celsius)}°C`, f: `${Math.round(f)}°F` };
+      }
+
+      function getCondition(code) {
+        return conditionMap[code] || { label: 'Unknown', emoji: '🌥️' };
+      }
+
+      function showError(message) {
+        condition.textContent = 'Weather unavailable';
+        emoji.textContent = '⚠️';
+        emojiLarge.textContent = '⚠️';
+        locationText.textContent = message;
+        moreText.textContent = 'Allow location access or try again later.';
+      }
+
+      async function loadWeather(lat, lon) {
+        try {
+          const now = new Date().toISOString().slice(0, 19);
+          const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+          const response = await fetch(url);
+          const data = await response.json();
+          const current = data.current_weather;
+          if (!current) return showError('No weather data returned.');
+          const values = formatTemp(current.temperature);
+          const weather = getCondition(current.weathercode);
+          condition.textContent = weather.label;
+          emoji.textContent = weather.emoji;
+          emojiLarge.textContent = weather.emoji;
+          tempF.textContent = values.f;
+          tempC.textContent = values.c;
+          locationText.textContent = `Lat ${lat.toFixed(2)}, Lon ${lon.toFixed(2)}`;
+          moreText.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
+          weatherLink.href = `https://open-meteo.com/en/docs#latitude=${lat}&longitude=${lon}`;
+        } catch (error) {
+          showError('Unable to load weather data.');
+          console.error(error);
+        }
+      }
+
+      function requestLocation() {
+        if (!navigator.geolocation) {
+          showError('Geolocation is not available in your browser.');
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            loadWeather(latitude, longitude);
+          },
+          () => {
+            showError('Location permission denied.');
+          },
+          { maximumAge: 15 * 60 * 1000, timeout: 10000 }
+        );
+      }
+
+      requestLocation();
+    </script>
   </body>
 </html>
