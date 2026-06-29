@@ -340,7 +340,11 @@
             loadWeather(latitude, longitude);
           },
           () => {
-            showError('Location permission denied.');
+            condition.textContent = 'Location disabled';
+            emoji.textContent = '📍';
+            emojiLarge.textContent = '📍';
+            locationText.textContent = 'Enable your location to see your weather.';
+            moreText.textContent = 'You can update permissions in your browser settings.';
           },
           { maximumAge: 15 * 60 * 1000, timeout: 10000 }
         );
