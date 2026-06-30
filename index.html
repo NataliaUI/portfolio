@@ -380,7 +380,7 @@
           emojiLarge.textContent = weather.emoji;
           tempF.textContent = values.f;
           tempC.textContent = values.c;
-          locationText.textContent = `Lat ${lat.toFixed(2)}, Lon ${lon.toFixed(2)}`;
+          locationText.textContent = 'Live weather for your area';
           moreText.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
           weatherLink.href = `https://open-meteo.com/en/docs#latitude=${lat}&longitude=${lon}`;
         } catch (error) {
