@@ -155,7 +155,6 @@
               <p class="weather-title">Live conditions</p>
               <p class="weather-condition" id="weather-condition">Loading weather…</p>
             </div>
-            <div class="weather-emoji" id="weather-emoji">☀️</div>
           </div>
           <div class="weather-body">
             <div class="weather-temp">
@@ -345,7 +344,6 @@
 
       const $ = (id) => document.getElementById(id);
       const condition = $('weather-condition');
-      const emoji = $('weather-emoji');
       const emojiLarge = $('weather-emoji-large');
       const tempF = $('weather-temp-f');
       const tempC = $('weather-temp-c');
@@ -364,7 +362,6 @@
 
       function showError(message) {
         condition.textContent = 'Weather unavailable';
-        emoji.textContent = '⚠️';
         emojiLarge.textContent = '⚠️';
         locationText.textContent = message;
         moreText.textContent = 'Allow location access or try again later.';
@@ -380,7 +377,6 @@
           const values = formatTemp(current.temperature);
           const weather = getCondition(current.weathercode);
           condition.textContent = weather.label;
-          emoji.textContent = weather.emoji;
           emojiLarge.textContent = weather.emoji;
           tempF.textContent = values.f;
           tempC.textContent = values.c;
