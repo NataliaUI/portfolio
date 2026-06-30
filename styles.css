@@ -185,26 +185,6 @@ nav {
   transform: translateY(-2px);
 }
 
-.hero-visual {
-  position: relative;
-  min-height: 380px;
-  border-radius: 36px;
-  padding: 2rem;
-  background: radial-gradient(circle at top left, rgba(124, 92, 255, 0.18), transparent 36%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  display: grid;
-  align-items: end;
-}
-
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(circle at 30% 20%, rgba(124, 92, 255, 0.3), transparent 29%);
-}
-
 .hero-card {
   position: relative;
   z-index: 1;
@@ -230,16 +210,6 @@ nav {
 .hero-card p {
   margin: 0.75rem 0 0;
   color: #d3d9f5;
-}
-
-.hero-glow {
-  position: absolute;
-  top: -48px;
-  right: -48px;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(124, 92, 255, 0.32), transparent 55%);
-  filter: blur(30px);
 }
 
 .stats {
