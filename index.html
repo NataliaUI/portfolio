@@ -32,19 +32,20 @@
       }
 
       .weather-section {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
+        position: relative;
         z-index: 5;
-        width: 180px;
-        max-width: calc(100% - 1rem);
+        width: 100%;
+        max-width: none;
+        margin-bottom: 1.5rem;
       }
 
       .weather-card {
         display: grid;
-        gap: 0.45rem;
-        padding: 0.7rem 0.8rem;
-        border-radius: 16px;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        border-radius: 20px;
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
@@ -147,6 +148,31 @@
   </head>
   <body>
     <div class="page">
+      <div class="weather-section">
+        <div class="weather-card" id="weather-card">
+          <div class="weather-header">
+            <div>
+              <p class="weather-title">Live conditions</p>
+              <p class="weather-condition" id="weather-condition">Loading weather…</p>
+            </div>
+            <div class="weather-emoji" id="weather-emoji">☀️</div>
+          </div>
+          <div class="weather-body">
+            <div class="weather-temp">
+              <div class="weather-emoji" id="weather-emoji-large">☀️</div>
+              <div class="weather-values">
+                <strong id="weather-temp-f">--°F</strong>
+                <span id="weather-temp-c">--°C</span>
+              </div>
+            </div>
+            <div class="weather-details">
+              <p id="weather-location">Determining location…</p>
+              <p id="weather-more">Allow location access to see live data.</p>
+              <a class="weather-link" id="weather-link" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Powered by Open-Meteo</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <header>
         <nav aria-label="Primary navigation">
           <a class="brand" href="#home">
@@ -181,32 +207,6 @@
           </div>
 
           <div class="hero-visual" aria-hidden="true">
-            <div class="weather-section">
-              <div class="weather-card" id="weather-card">
-                <div class="weather-header">
-                  <div>
-                    <p class="weather-title">Live conditions</p>
-                    <p class="weather-condition" id="weather-condition">Loading weather…</p>
-                  </div>
-                  <div class="weather-emoji" id="weather-emoji">☀️</div>
-                </div>
-                <div class="weather-body">
-                  <div class="weather-temp">
-                    <div class="weather-emoji" id="weather-emoji-large">☀️</div>
-                    <div class="weather-values">
-                      <strong id="weather-temp-f">--°F</strong>
-                      <span id="weather-temp-c">--°C</span>
-                    </div>
-                  </div>
-                  <div class="weather-details">
-                    <p id="weather-location">Determining location…</p>
-                    <p id="weather-more">Allow location access to see live data.</p>
-                    <a class="weather-link" id="weather-link" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Powered by Open-Meteo</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div class="hero-glow"></div>
             <div class="hero-card">
               <h2>Design with empathy</h2>
