@@ -135,10 +135,7 @@ nav {
 .headline {
   margin: 0;
   font-size: clamp(3rem, 4.4vw, 4.8rem);
-  line-height: 0.98;
-  color: white;
-}
-
+    line-height: 1.08;
 .hero-copy p {
   color: var(--text-muted);
   font-size: 1.05rem;
