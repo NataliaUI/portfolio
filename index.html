@@ -165,8 +165,6 @@
               </div>
             </div>
             <div class="weather-details">
-              <p id="weather-location">Determining location…</p>
-              <p id="weather-more">Allow location access to see live data.</p>
               <a class="weather-link" id="weather-link" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Powered by Open-Meteo</a>
             </div>
           </div>
@@ -347,8 +345,6 @@
       const emojiLarge = $('weather-emoji-large');
       const tempF = $('weather-temp-f');
       const tempC = $('weather-temp-c');
-      const locationText = $('weather-location');
-      const moreText = $('weather-more');
       const weatherLink = $('weather-link');
 
       function formatTemp(celsius) {
@@ -380,8 +376,6 @@
           emojiLarge.textContent = weather.emoji;
           tempF.textContent = values.f;
           tempC.textContent = values.c;
-          locationText.textContent = 'Live weather for your area';
-          moreText.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`;
           weatherLink.href = `https://open-meteo.com/en/docs#latitude=${lat}&longitude=${lon}`;
         } catch (error) {
           showError('Unable to load weather data.');
